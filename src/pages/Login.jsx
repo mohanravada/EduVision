@@ -4,7 +4,7 @@ import { FiEye, FiEyeOff } from "react-icons/fi";
 import { motion } from "framer-motion";
 
 // Firebase imports
-import { auth } from "../firebaseConfig";
+import { auth } from "../auth/firebaseConfig";
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 
 export default function Login() {
