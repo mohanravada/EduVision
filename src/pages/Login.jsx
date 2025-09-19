@@ -2,13 +2,18 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { FiEye, FiEyeOff } from "react-icons/fi";
 import { motion } from "framer-motion";
-import logo from "../assests/logo.png"; // ✅ logo
+
+// Firebase imports
+import { auth } from "../firebaseConfig";
+import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 
 export default function Login() {
   const navigate = useNavigate();
 
-  const [role, setRole] = useState("student"); // student | admin
-  const [mode, setMode] = useState("login"); // login | register | reset
+  // role: student | admin
+  const [role, setRole] = useState("student");
+  // mode: login | register | reset
+  const [mode, setMode] = useState("login");
 
   const [show, setShow] = useState(false);
   const [name, setName] = useState("");
@@ -30,7 +35,7 @@ export default function Login() {
   };
   ensureDefaultAdmin();
 
-  // Handle login
+  // Handle normal login
   const handleLogin = (e) => {
     e.preventDefault();
     if (role === "student") {
@@ -54,7 +59,7 @@ export default function Login() {
     }
   };
 
-  // Handle register
+  // Handle registration
   const handleRegister = (e) => {
     e.preventDefault();
     if (role === "student") {
@@ -108,63 +113,63 @@ export default function Login() {
     }
   };
 
-  // Google login (mock)
-  const handleGoogleLogin = () => {
-    alert("Google Sign-In clicked! (Mock only)");
-    localStorage.setItem("edu_user", JSON.stringify({ email: "googleuser@gmail.com", role }));
-    navigate(role === "student" ? "/student/dashboard" : "/admin/dashboard");
+  // ✅ Google Sign-in handler
+  const handleGoogleLogin = async () => {
+    try {
+      const provider = new GoogleAuthProvider();
+      const result = await signInWithPopup(auth, provider);
+
+      const user = result.user;
+      localStorage.setItem(
+        "edu_user",
+        JSON.stringify({ email: user.email, role: "student" }) // default student role
+      );
+
+      navigate("/student/dashboard");
+    } catch (error) {
+      console.error("Google login error:", error);
+      alert("Google Sign-In failed. Please try again.");
+    }
   };
 
   return (
     <div className="relative flex items-center justify-center min-h-screen bg-gradient-to-br from-blue-900 via-purple-800 to-pink-700 overflow-hidden">
-      {/* Floating background icons */}
+      {/* Floating icons */}
       <div className="absolute top-10 left-10 text-white/20 text-6xl animate-bounce">📚</div>
       <div className="absolute bottom-20 right-16 text-white/20 text-5xl animate-pulse">➡️</div>
       <div className="absolute top-40 right-32 text-white/20 text-7xl animate-spin-slow">🎓</div>
 
-      {/* Card */}
+      {/* Role toggle */}
+      <div className="absolute top-8 flex gap-4">
+        <button
+          onClick={() => { setRole("student"); setMode("login"); }}
+          className={`px-6 py-2 rounded-full font-semibold transition-all duration-300 ${
+            role === "student"
+              ? "bg-gradient-to-r from-blue-500 to-purple-500 text-white shadow-lg"
+              : "border border-white/60 text-white hover:bg-white/10"
+          }`}
+        >
+          Student
+        </button>
+        <button
+          onClick={() => { setRole("admin"); setMode("login"); }}
+          className={`px-6 py-2 rounded-full font-semibold transition-all duration-300 ${
+            role === "admin"
+              ? "bg-gradient-to-r from-blue-500 to-purple-500 text-white shadow-lg"
+              : "border border-white/60 text-white hover:bg-white/10"
+          }`}
+        >
+          College Admin
+        </button>
+      </div>
+
+      {/* Auth Card */}
       <motion.div
         initial={{ opacity: 0, y: 40 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
         className="relative z-10 w-full max-w-md bg-white rounded-2xl shadow-2xl p-8 mt-20"
       >
-        {/* Logo + Name */}
-        <div className="flex items-center justify-center gap-3 mb-6">
-          <img src={logo} alt="EduVision Logo" className="h-10 w-10" />
-          <h1 className="text-2xl font-bold text-gray-800">EduVision</h1>
-        </div>
-
-        {/* Role toggle */}
-        <div className="flex justify-center gap-4 mb-6">
-          <button
-            onClick={() => {
-              setRole("student");
-              setMode("login");
-            }}
-            className={`px-6 py-2 rounded-full font-semibold transition-all duration-300 ${
-              role === "student"
-                ? "bg-gradient-to-r from-blue-500 to-purple-500 text-white shadow-lg"
-                : "border border-gray-400 text-gray-700 hover:bg-gray-100"
-            }`}
-          >
-            Student
-          </button>
-          <button
-            onClick={() => {
-              setRole("admin");
-              setMode("login");
-            }}
-            className={`px-6 py-2 rounded-full font-semibold transition-all duration-300 ${
-              role === "admin"
-                ? "bg-gradient-to-r from-blue-500 to-purple-500 text-white shadow-lg"
-                : "border border-gray-400 text-gray-700 hover:bg-gray-100"
-            }`}
-          >
-            College Admin
-          </button>
-        </div>
-
         <h2 className="text-2xl font-bold text-center text-gray-800 mb-6">
           {mode === "login"
             ? role === "student"
@@ -201,6 +206,7 @@ export default function Login() {
               )}
             </>
           )}
+
           <input
             type="email"
             placeholder="Email"
@@ -208,6 +214,7 @@ export default function Login() {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
+
           <div className="relative">
             <input
               type={show ? "text" : "password"}
@@ -223,6 +230,7 @@ export default function Login() {
               {show ? <FiEyeOff /> : <FiEye />}
             </span>
           </div>
+
           <button
             type="submit"
             className="w-full py-3 bg-gradient-to-r from-blue-500 to-purple-600 text-white font-semibold rounded-lg shadow-md hover:shadow-xl transform hover:scale-[1.02] transition"
@@ -231,16 +239,19 @@ export default function Login() {
           </button>
         </form>
 
-        {/* Google Sign-In Button */}
-        {mode === "login" && (
-          <button
-            onClick={handleGoogleLogin}
-            className="w-full mt-4 flex items-center justify-center gap-3 py-3 border border-gray-300 rounded-lg hover:bg-gray-100 transition"
-          >
-            <img src="https://www.svgrepo.com/show/355037/google.svg" alt="Google Icon" className="w-5 h-5" />
-            <span className="font-medium text-gray-700">Sign in with Google</span>
-          </button>
-        )}
+        {/* Google Sign-In */}
+        <button
+          onClick={handleGoogleLogin}
+          type="button"
+          className="w-full mt-3 py-3 flex items-center justify-center gap-2 bg-white text-gray-800 font-semibold rounded-lg shadow-md hover:shadow-lg transform hover:scale-[1.02] transition"
+        >
+          <img
+            src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg"
+            alt="Google"
+            className="w-5 h-5"
+          />
+          Sign in with Google
+        </button>
 
         {/* Links */}
         {mode === "login" && (
@@ -254,13 +265,14 @@ export default function Login() {
           </div>
         )}
         {mode !== "login" && (
-          <p onClick={() => setMode("login")} className="mt-4 text-center text-sm text-blue-600 cursor-pointer hover:underline">
+          <p
+            onClick={() => setMode("login")}
+            className="mt-4 text-center text-sm text-blue-600 cursor-pointer hover:underline"
+          >
             Back to Login
           </p>
         )}
       </motion.div>
-
-      
     </div>
   );
 }

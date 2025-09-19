@@ -13,7 +13,7 @@ export default function NotFound() {
           to="/"
           className="px-6 py-3 bg-gradient-to-r from-purple-500 to-indigo-600 rounded-lg shadow-md"
         >
-          Continue
+          Enter
         </Link>
       </div>
     </div>
