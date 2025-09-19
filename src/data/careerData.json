@@ -1,0 +1,136 @@
+{
+  "10th": [
+    {
+      "id": "inter",
+      "title": "Intermediate (11th & 12th)",
+      "description": "Choose a stream after 10th to prepare for higher studies.",
+      "paths": ["Science (PCM/PCB)", "Commerce", "Arts / Humanities", "Vocational Courses"]
+    },
+    {
+      "id": "diploma",
+      "title": "Diploma / Polytechnic",
+      "description": "3-year diploma programs in technical and professional fields.",
+      "paths": ["Civil Engineering", "Mechanical", "Computer Science", "Electronics", "Automobile"]
+    },
+    {
+      "id": "iti",
+      "title": "ITI (Industrial Training Institute)",
+      "description": "Skill-based programs focusing on trades and technical skills.",
+      "paths": ["Electrician", "Fitter", "Welder", "Plumber", "Machinist"]
+    },
+    {
+      "id": "paramedical",
+      "title": "Paramedical Courses",
+      "description": "Short-term healthcare diploma courses.",
+      "paths": ["Lab Technician", "Radiology", "Pharmacy Assistant", "Nursing Assistant"]
+    }
+  ],
+
+  "inter": [
+    {
+      "id": "btech",
+      "title": "Engineering (B.Tech / B.E.)",
+      "description": "4-year technical course with multiple branches.",
+      "paths": ["CSE", "Mechanical", "Civil", "ECE", "AI & ML", "Data Science"]
+    },
+    {
+      "id": "medical",
+      "title": "Medical",
+      "description": "Courses in healthcare and allied sciences.",
+      "paths": ["MBBS", "BDS", "BAMS", "BHMS", "B.Pharmacy", "B.Sc Nursing"]
+    },
+    {
+      "id": "commerce",
+      "title": "Commerce",
+      "description": "Study of finance, trade, and management.",
+      "paths": ["B.Com", "BBA", "CA Foundation", "CMA", "Economics"]
+    },
+    {
+      "id": "arts",
+      "title": "Arts / Humanities",
+      "description": "Courses in creative, cultural, and social sciences.",
+      "paths": ["BA English", "BA History", "BA Political Science", "Fine Arts", "Design"]
+    },
+    {
+      "id": "law",
+      "title": "Law",
+      "description": "Integrated law courses after 12th.",
+      "paths": ["BA LLB", "BBA LLB", "B.Com LLB"]
+    }
+  ],
+
+  "iti": [
+    {
+      "id": "lateral-btech",
+      "title": "Lateral Entry to Engineering",
+      "description": "Diploma / ITI students can join engineering in 2nd year directly.",
+      "paths": ["B.Tech in Civil", "B.Tech in Mechanical", "B.Tech in CSE"]
+    },
+    {
+      "id": "govt-jobs",
+      "title": "Government Jobs",
+      "description": "Many ITI/diploma students qualify for public sector jobs.",
+      "paths": ["Railways", "PSUs", "Defence Services", "Apprenticeships"]
+    },
+    {
+      "id": "advanced-diploma",
+      "title": "Advanced Diploma Programs",
+      "description": "Specialized 1–2 year programs to upgrade technical skills.",
+      "paths": ["Automation", "Tool & Die Making", "CNC Programming"]
+    }
+  ],
+
+  "ug": [
+    {
+      "id": "pg-courses",
+      "title": "Postgraduate Courses",
+      "description": "Higher education options after graduation.",
+      "paths": ["M.Tech", "MBA", "M.Com", "M.Sc", "MA"]
+    },
+    {
+      "id": "govt-exams",
+      "title": "Government Exams",
+      "description": "Opportunities in public sector and administration.",
+      "paths": ["UPSC Civil Services", "SSC CGL", "Banking Exams", "State PSCs"]
+    },
+    {
+      "id": "private-jobs",
+      "title": "Private Sector Jobs",
+      "description": "Jobs in IT, Finance, Marketing, Manufacturing, etc.",
+      "paths": ["Software Developer", "Financial Analyst", "Sales & Marketing", "HR"]
+    },
+    {
+      "id": "entrepreneurship",
+      "title": "Entrepreneurship",
+      "description": "Start your own business or startup after graduation.",
+      "paths": ["Tech Startups", "Small Business", "Freelancing", "E-commerce"]
+    }
+  ],
+
+  "pg": [
+    {
+      "id": "phd",
+      "title": "Ph.D / Research",
+      "description": "Doctoral level studies leading to academic and research roles.",
+      "paths": ["Ph.D in Sciences", "Ph.D in Engineering", "Ph.D in Arts", "Research Labs"]
+    },
+    {
+      "id": "academia",
+      "title": "Teaching / Academia",
+      "description": "Teaching jobs in schools, colleges, and universities.",
+      "paths": ["Lecturer", "Professor", "School Teacher (B.Ed required)"]
+    },
+    {
+      "id": "special-exams",
+      "title": "Specialized Exams",
+      "description": "Higher-level competitive exams for top posts.",
+      "paths": ["UPSC IES", "Judiciary Exams", "Specialized PSU exams"]
+    },
+    {
+      "id": "industry-expert",
+      "title": "Industry Expert Roles",
+      "description": "High-level leadership and specialist roles.",
+      "paths": ["Data Scientist", "AI/ML Expert", "Corporate Manager", "Policy Advisor"]
+    }
+  ]
+}

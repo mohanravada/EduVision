@@ -10,6 +10,7 @@ import {
   FaUser,
   FaSignOutAlt,
   FaQuestionCircle,
+  FaPen,
 } from "react-icons/fa";
 
 export default function StudentLayout() {
@@ -45,23 +46,18 @@ export default function StudentLayout() {
             to="/student/quiz"
             className="flex items-center gap-3 hover:text-purple-400"
           >
-            <FaSearch /> Career Quiz
+            <FaPen /> Career Quiz
           </Link>
           <Link to="/student/career-guide" className="flex items-center gap-3 hover:text-purple-400">
   <FaGraduationCap /> Career Guide
 </Link>
 
-          <Link
-            to="/student/career-guide"
-            className="flex items-center gap-3 hover:text-purple-400"
-          >
-            <FaQuestionCircle /> Career Guide
-          </Link>
+          
           <Link
             to="/student/search-colleges"
             className="flex items-center gap-3 hover:text-purple-400"
           >
-            <FaGraduationCap /> Search Colleges
+            <FaSearch /> Search Colleges
           </Link>
           <Link
             to="/student/saved-colleges"

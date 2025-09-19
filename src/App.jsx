@@ -14,6 +14,7 @@ import ProtectedRoute from "./components/ProtectedRoute.jsx";
 import StudentLayout from "./pages/StudentLayout.jsx";
 import AdminLayout from "./pages/AdminLayout.jsx";
 import CareerGuide from "./pages/CareerGuide.jsx";
+import CareerDetails from "./pages/CareerDetails.jsx";
 
 export default function App() {
   return (
@@ -41,6 +42,7 @@ export default function App() {
               <Route path="saved-colleges" element={<SavedColleges />} />
               <Route path="scholarships" element={<Scholarships />} />
               <Route path="career-guide" element={<CareerGuide />} />
+              <Route path="career/:id" element={<CareerDetails />} />
             </Routes>
 
             
