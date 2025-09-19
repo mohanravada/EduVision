@@ -40,9 +40,10 @@ export default function App() {
               <Route path="college/:id" element={<CollegeDetails />} />
               <Route path="saved-colleges" element={<SavedColleges />} />
               <Route path="scholarships" element={<Scholarships />} />
+              <Route path="career-guide" element={<CareerGuide />} />
             </Routes>
 
-            <Route path="/student/career-guide" element={<CareerGuide />} />
+            
 
           </ProtectedRoute>
         }
@@ -71,6 +72,7 @@ export default function App() {
   <Route index element={<StudentDashboard />} />
   <Route path="dashboard" element={<StudentDashboard />} />
   <Route path="quiz" element={<CareerQuiz />} />
+  <Route path="career-guide" element={<CareerGuide />} />
   <Route path="search-colleges" element={<SearchColleges />} />
   <Route path="college/:id" element={<CollegeDetails />} />
   <Route path="saved-colleges" element={<SavedColleges />} />
