@@ -1,4 +1,4 @@
-import { HashRouter as Router,Routes,Route } from "react-router-dom";
+import { BrowserRouter as Router,Routes,Route } from "react-router-dom";
 import Greeting from "./pages/Greeting.jsx";
 import Login from "./pages/Login.jsx";
 import StudentDashboard from "./pages/StudentDashboard.jsx";
@@ -13,6 +13,7 @@ import NotFound from "./pages/NotFound.jsx";
 import ProtectedRoute from "./components/ProtectedRoute.jsx";
 import StudentLayout from "./pages/StudentLayout.jsx";
 import AdminLayout from "./pages/AdminLayout.jsx";
+import CareerGuide from "./pages/CareerGuide.jsx";
 
 export default function App() {
   return (
@@ -40,6 +41,9 @@ export default function App() {
               <Route path="saved-colleges" element={<SavedColleges />} />
               <Route path="scholarships" element={<Scholarships />} />
             </Routes>
+
+            <Route path="/student/career-guide" element={<CareerGuide />} />
+
           </ProtectedRoute>
         }
       />
